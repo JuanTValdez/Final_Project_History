@@ -20,11 +20,21 @@ function App() {
 
   const [apiData, setApidata] = useState([]);
 
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/users').then((res) => {
+  //     setApidata(res.data);
+  //     console.log('res: ', res.data);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    axios.get('http://localhost:8080/users').then((res) => {
+    axios.get('http://localhost:8080/facts').then((res) => {
       setApidata(res.data);
+      console.log('facts: ', res.data);
     });
   }, []);
+
+  console.log('api data: ', apiData);
 
   return (
     <div className='App'>
@@ -33,12 +43,18 @@ function App() {
           return (
             <div key={index}>
               <h5>
-                {'Id: ' +
-                  `${data.id}` +
-                  ', Email: ' +
-                  `${data.email}` +
-                  ', Password: ' +
-                  `${data.password}`}
+                {'Date: ' +
+                  `${data.fact_date}` +
+                  ', category: ' +
+                  `${data.category}` +
+                  ', Fact Summary: ' +
+                  `${data.fact_summary}`}
+                <br />
+                <br />
+                {'Long Fact 1: ' + `${data.fact_long_1}`}
+                <br />
+                <br />
+                {'Long Fact 2: ' + `${data.fact_long_2}`}
               </h5>
             </div>
           );
