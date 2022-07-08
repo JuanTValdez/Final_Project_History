@@ -8,38 +8,36 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import './App.css';
+import './Card.css';
 
 function App() {
-  const [value, setValue] = useState(new Date('2014-08-18T21:11:54'));
+  // const [value, setValue] = useState(new Date('2014-08-18T21:11:54'));
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-    console.log(dateFormat(newValue, 'mm-d-yyyy'));
-    console.log(newValue);
-  };
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  //   console.log(dateFormat(newValue, 'mm-d-yyyy'));
+  //   console.log(newValue);
+  // };
 
-  const [apiData, setApidata] = useState([]);
+  const [apiData, setApidata] = useState(null);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:8080/users').then((res) => {
-  //     setApidata(res.data);
-  //     console.log('res: ', res.data);
-  //   });
-  // }, []);
-
-  useEffect(() => {
+  const getData = () => {
     axios.get('http://localhost:8080/facts').then((res) => {
+      console.log('ddd', res.data);
       setApidata(res.data);
-      console.log('facts: ', res.data);
     });
+  };
+  useEffect(() => {
+    getData();
   }, []);
 
-  console.log('api data: ', apiData);
+  const categoryName = apiData ? apiData[0].category : '';
 
+  // console.log('Data: ', apiData[0].category);
   return (
     <div className='App'>
       <header className='App-header'>
-        {apiData.map((data, index) => {
+        {/* {apiData.map((data, index) => {
           return (
             <div key={index}>
               <h5>
@@ -58,9 +56,9 @@ function App() {
               </h5>
             </div>
           );
-        })}
+        })} */}
       </header>
-
+      {/* 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack spacing={3}>
           <DesktopDatePicker
@@ -78,7 +76,18 @@ function App() {
             renderInput={(params) => <TextField {...params} />}
           />
         </Stack>
-      </LocalizationProvider>
+      </LocalizationProvider> */}
+      <h3>Example </h3>
+      <div className='card'>
+        <div className='thumbnail'>
+          <img src='https://www.buyflags.eu/sites/default/files/styles/medium/public/flags-image/state-flags/canada.png?itok=i7jzXf98' />
+        </div>
+        <div className='cardDetails'>
+          <p> {`Title:`}</p>
+
+          <p>Category: {categoryName} </p>
+        </div>
+      </div>
     </div>
   );
 }

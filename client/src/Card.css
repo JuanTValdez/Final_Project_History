@@ -1,0 +1,22 @@
+.card {
+  height: 375px;
+  width: 225px;
+  background-color: navy;
+  border: 2px red solid;
+}
+
+.thumbnail {
+  text-align: center;
+  margin: 15px;
+}
+.thumbnail img {
+  max-width: 90%;
+  max-height: 80%;
+  align-content: center;
+}
+
+.cardDetails {
+  /* border: 2px white solid; */
+  margin: 15px;
+  color: white;
+}
