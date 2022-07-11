@@ -92,7 +92,10 @@ function App() {
       <div class='container'>
         <div class='cellphone-container'>
           <div class='movie'>
-            <div class='movie-img'></div>
+            <img
+              class='movie-img'
+              src='https://www.buyflags.eu/sites/default/files/styles/medium/public/flags-image/state-flags/canada.png?itok=i7jzXf98'
+            />
             <div class='text-movie-cont'>
               <div class='mr-grid'>
                 <div class='col1'>

@@ -29,16 +29,16 @@
 }
 
 .movie-img {
-  width: 100%;
+  width: 90%;
   height: 180px;
-  background-image: url(https://i.ibb.co/FDGqCmM/papers-co-ag74-interstellar-wide-space-film-movie-art-33-iphone6-wallpaper.jpg);
+  /* background-image: url(https://i.ibb.co/FDGqCmM/papers-co-ag74-interstellar-wide-space-film-movie-art-33-iphone6-wallpaper.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   /* z-index: 111 !important; */
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  /* -webkit-mask-image: -webkit-gradient(
+  margin: 5% 5% 0px 5%; /* -webkit-mask-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
@@ -82,7 +82,7 @@
   background-size: cover;
   z-index: 1 !important;
   width: 300px;
-  height: 475px;
+  height: 500px;
   display: block;
   border-radius: 4px;
 }
