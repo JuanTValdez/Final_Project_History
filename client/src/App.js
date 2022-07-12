@@ -23,7 +23,7 @@ function App() {
 
   const getData = () => {
     axios.get('http://localhost:8080/facts').then((res) => {
-      console.log('ddd', res.data);
+      console.log('Data', res.data);
       setApidata(res.data);
     });
   };
@@ -31,12 +31,21 @@ function App() {
     getData();
   }, []);
 
+  const title = apiData ? apiData[0].title : '';
   const categoryName = apiData ? apiData[0].category : '';
-
-  // console.log('Data: ', apiData[0].category);
+  const factDate = apiData ? apiData[0].fact_date : '';
+  const factSummary = apiData ? apiData[0].fact_summary : '';
+  const partiesInvolved = apiData ? apiData[0].parties_involved : '';
   return (
     <div className='App'>
       <header className='App-header'>
+        <h1 className='headline'>What Happened?</h1>
+        <h2 className='subhead'>This day in history</h2>
+        <div className='article-meta'>
+          <p className='byline'>by Juan Valdez</p>
+          {/* 
+          <p className='dateline'>June 21, 2021</p> */}
+        </div>
         {/* {apiData.map((data, index) => {
           return (
             <div key={index}>
@@ -78,72 +87,51 @@ function App() {
         </Stack>
       </LocalizationProvider> */}
       <h3>Example </h3>
-      {/* <div className='card'>
-        <div className='thumbnail'>
-          <img src='https://www.buyflags.eu/sites/default/files/styles/medium/public/flags-image/state-flags/canada.png?itok=i7jzXf98' />
-        </div>
-        <div className='cardDetails'>
-          <p> {`Title:`}</p>
 
-          <p>Category: {categoryName} </p>
-        </div>
-      </div> */}
-
-      <div class='container'>
-        <div class='cellphone-container'>
-          <div class='movie'>
+      <div className='container'>
+        <div className='cellphone-container'>
+          <div className='card'>
             <img
-              class='movie-img'
+              className='card-img'
               src='https://www.buyflags.eu/sites/default/files/styles/medium/public/flags-image/state-flags/canada.png?itok=i7jzXf98'
+              alt='Canada'
             />
-            <div class='text-movie-cont'>
-              <div class='mr-grid'>
-                <div class='col1'>
-                  <h1>Interstellar</h1>
-                  <ul class='movie-gen'>
-                    <li>PG-13 /</li>
-                    <li>2h 49min /</li>
-                    <li>Adventure, Drama, Sci-Fi,</li>
+            <div className='text-card-cont'>
+              <div className='mr-grid'>
+                <div className='col1'>
+                  <h1>{title}</h1>
+                  <ul className='card-gen'>
+                    <li>{categoryName} /</li>
+                    <li>{factDate} </li>
                   </ul>
                 </div>
               </div>
-              <div class='mr-grid summary-row'>
-                <div class='col2'>
+              <div className='mr-grid summary-row'>
+                <div className='col2'>
                   <h5>SUMMARY</h5>
                 </div>
-                <div class='col2'></div>
+                <div className='col2'></div>
               </div>
-              <div class='mr-grid'>
-                <div class='col1'>
-                  <p class='movie-description'>
-                    A group of elderly people are giving interviews about having
-                    lived in a climate of crop blight and constant dust
-                    reminiscent of The Great Depression of the 1930's. The first
-                    one seen is an elderly woman stating her father was a
-                    farmer, but did not start out that way.{' '}
+              <div className='mr-grid'>
+                <div className='col1'>
+                  <p className='card-description'>{factSummary}</p>
+                </div>
+              </div>
+              <div className='mr-grid parties-row'>
+                <div className='col1'>
+                  <p className='card-parties'>
+                    {/* Parties Involved */}
+                    {partiesInvolved}
                   </p>
                 </div>
               </div>
-              <div class='mr-grid actors-row'>
-                <div class='col1'>
-                  <p class='movie-actors'>
-                    Matthew McConaughey, Anne Hathaway, Jessica Chastain
-                  </p>
-                </div>
-              </div>
-              <div class='mr-grid action-row'>
-                <div class='col2'></div>
+              <div className='mr-grid action-row'>
+                <div className='col2'></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <a href='https://dribbble.com/geehm' target='_blank'>
-        <img
-          class='dribbble-link'
-          src='https://image.flaticon.com/icons/png/512/124/124037.png'
-        />
-      </a>
     </div>
   );
 }
