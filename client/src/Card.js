@@ -1,15 +1,27 @@
 // import './App.css';
+import { useState } from 'react';
 import './Card.css';
 
 function Card(props) {
+  const [cardValue, setCardValue] = useState();
+
+  const clicked = () => {
+    console.log('this was clicked: ', props.cardData);
+  };
+
+  const cardData = (e) => {
+    e.preventDefault();
+    setCardValue(props.id);
+    console.log('target: ', cardValue);
+  };
   return (
     <div className='App'>
       <div className='container'>
-        <div className='cellphone-container'>
-          <div className='card'>
+        <div className='cellphone-container '>
+          <div className='card' onClick={clicked}>
             <img
               className='card-img'
-              src='https://www.buyflags.eu/sites/default/files/styles/medium/public/flags-image/state-flags/canada.png?itok=i7jzXf98'
+              src={props.cardData.thumbnail}
               alt='Canada'
             />
             <div className='text-card-cont'>

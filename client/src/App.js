@@ -10,29 +10,26 @@ import axios from 'axios';
 import './App.css';
 import './Card.css';
 import Card from './Card.js';
+import DatePicker from './DatePicker.js';
 
 function App() {
-  // const [value, setValue] = useState(new Date('2014-08-18T21:11:54'));
-
-  // const handleChange = (newValue) => {
-  //   setValue(newValue);
-  //   console.log(dateFormat(newValue, 'mm-d-yyyy'));
-  //   console.log(newValue);
-  // };
-
   // Do a search for react axios argument
 
   const [apiData, setApidata] = useState([]);
 
   useEffect(() => {
-    async function getData() {
+    async function getData(e) {
       const res = await axios.get('http://localhost:8080/facts');
       console.log('Data', res.data);
+      // console.log('target: ', e.target.value);
       setApidata(res.data);
     }
     getData();
   }, []);
 
+  const clicked = (e) => {
+    console.log('jjj: ', e.target.value);
+  };
   return (
     <div className='App'>
       <header className='App-header'>
@@ -42,27 +39,9 @@ function App() {
           <p className='byline'>by Juan Valdez</p>
         </div>
       </header>
-      {/* 
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Stack spacing={3}>
-          <DesktopDatePicker
-            label='Date desktop'
-            inputFormat='MM-dd-yyyy'
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-          <MobileDatePicker
-            label='Date mobile'
-            inputFormat='MM/dd/yyyy'
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Stack>
-      </LocalizationProvider> */}
 
-      {/* {console.log('FOUND DATA:', apiData)} */}
+      <DatePicker />
+
       <div className='flex-card'>
         {!apiData
           ? null
@@ -70,11 +49,14 @@ function App() {
               return (
                 <div key={index}>
                   <Card
+                    id={data.id}
                     title={data.title}
+                    thumbnail={data.thumbnail}
                     categoryName={data.category}
                     factDate={data.fact_date}
                     factSummary={data.fact_summary}
                     partiesInvolved={data.parties_involved}
+                    cardData={data}
                   />
                 </div>
               );
