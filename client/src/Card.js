@@ -1,11 +1,9 @@
-import './App.css';
+// import './App.css';
 import './Card.css';
 
-function App(props) {
+function Card(props) {
   return (
     <div className='App'>
-      <h3>Example </h3>
-
       <div className='container'>
         <div className='cellphone-container'>
           <div className='card'>
@@ -51,4 +49,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default Card;

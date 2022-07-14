@@ -39,3 +39,10 @@ header h2 {
   width: 80%;
   margin: auto;
 }
+
+.flex-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+}

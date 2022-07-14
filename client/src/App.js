@@ -20,6 +20,8 @@ function App() {
   //   console.log(newValue);
   // };
 
+  // Do a search for react axios argument
+
   const [apiData, setApidata] = useState([]);
 
   useEffect(() => {
@@ -61,21 +63,23 @@ function App() {
       </LocalizationProvider> */}
 
       {/* {console.log('FOUND DATA:', apiData)} */}
-      {!apiData
-        ? null
-        : apiData.map((data, index) => {
-            return (
-              <div key={index}>
-                <Card
-                  title={data.title}
-                  categoryName={data.category}
-                  factDate={data.fact_date}
-                  factSummary={data.fact_summary}
-                  partiesInvolved={data.parties_involved}
-                />
-              </div>
-            );
-          })}
+      <div className='flex-card'>
+        {!apiData
+          ? null
+          : apiData.map((data, index) => {
+              return (
+                <div key={index}>
+                  <Card
+                    title={data.title}
+                    categoryName={data.category}
+                    factDate={data.fact_date}
+                    factSummary={data.fact_summary}
+                    partiesInvolved={data.parties_involved}
+                  />
+                </div>
+              );
+            })}
+      </div>
     </div>
   );
 }
