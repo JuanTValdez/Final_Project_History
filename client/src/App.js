@@ -17,6 +17,17 @@ function App() {
 
   const [apiData, setApidata] = useState([]);
 
+  const [value, setValue] = useState(new Date());
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+    console.log(
+      'This has been passed from datepicker component: ',
+      dateFormat(newValue, 'mm-d-yyyy')
+    );
+    console.log(newValue);
+  };
+
   useEffect(() => {
     async function getData(e) {
       const res = await axios.get('http://localhost:8080/facts');
@@ -40,7 +51,7 @@ function App() {
         </div>
       </header>
 
-      <DatePicker />
+      <DatePicker handleChange={handleChange} value={value} />
 
       <div className='flex-card'>
         {!apiData

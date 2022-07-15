@@ -7,14 +7,14 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import dateFormat from 'dateformat';
 
-export default function DatePicker() {
-  const [value, setValue] = useState(new Date());
+export default function DatePicker(props) {
+  // const [value, setValue] = useState(new Date());
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-    console.log(dateFormat(newValue, 'mm-d-yyyy'));
-    console.log(newValue);
-  };
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  //   console.log(dateFormat(newValue, 'mm-d-yyyy'));
+  //   console.log(newValue);
+  // };
 
   return (
     <div>
@@ -23,8 +23,8 @@ export default function DatePicker() {
           <DesktopDatePicker
             label='Date desktop'
             inputFormat='MM-dd-yyyy'
-            value={value}
-            onChange={handleChange}
+            value={props.value}
+            onChange={props.handleChange}
             renderInput={(params) => <TextField {...params} />}
           />
         </Stack>
