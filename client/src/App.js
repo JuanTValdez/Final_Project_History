@@ -15,7 +15,7 @@ import DatePicker from './DatePicker.js';
 function App() {
   // Do a search for react axios argument
 
-  const [apiData, setApidata] = useState([]);
+  const [apiData, setApiData] = useState([]);
 
   const [value, setValue] = useState(new Date());
 
@@ -23,24 +23,31 @@ function App() {
     setValue(newValue);
     console.log(
       'This has been passed from datepicker component: ',
-      dateFormat(newValue, 'mm-d-yyyy')
+      dateFormat(newValue, 'mm-dd-yyyy')
     );
-    console.log(newValue);
+
+    getFactDate();
+    // console.log(newValue);
   };
 
-  useEffect(() => {
-    async function getData(e) {
+  async function getFactDate(e) {
+    {
       const res = await axios.get('http://localhost:8080/facts');
-      console.log('Data', res.data);
-      // console.log('target: ', e.target.value);
-      setApidata(res.data);
+      console.log('CLICKED DATA: ', res.data);
+      setApiData(res.data);
     }
-    getData();
-  }, []);
+  }
 
-  const clicked = (e) => {
-    console.log('jjj: ', e.target.value);
-  };
+  // useEffect(() => {
+  //   async function getData(e) {
+  //     const res = await axios.get('http://localhost:8080/facts');
+  //     console.log('Data', res.data);
+
+  //     setApiData(res.data);
+  //   }
+  //   getData();
+  // }, []);
+
   return (
     <div className='App'>
       <header className='App-header'>
