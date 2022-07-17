@@ -23,6 +23,7 @@ export default function DatePicker(props) {
           <DesktopDatePicker
             label='Date desktop'
             inputFormat='MM-dd-yyyy'
+            // props.value is the issue. value has the current date instead of clicked date.
             value={props.value}
             onChange={props.handleChange}
             renderInput={(params) => <TextField {...params} />}

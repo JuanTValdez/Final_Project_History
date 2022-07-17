@@ -16,23 +16,33 @@ function App() {
   // Do a search for react axios argument
 
   const [apiData, setApiData] = useState([]);
-
+  // TODO:
+  // value is the bug
   const [value, setValue] = useState(new Date());
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setValue(dateFormat(newValue, 'mm-dd-yyyy'));
+
+    //TODO: FIX DATE BUG
+    // May need to make another state to hold the formatted value
+    console.log('Value before format: ', newValue);
     console.log(
       'This has been passed from datepicker component: ',
-      dateFormat(newValue, 'mm-dd-yyyy')
+      dateFormat(value, 'mm-dd-yyyy')
     );
 
     getFactDate();
-    // console.log(newValue);
+    console.log('FFF: ', newValue);
   };
 
   async function getFactDate(e) {
     {
-      const res = await axios.get('http://localhost:8080/facts');
+      // this may be the primary issue.
+      const formattedValue = dateFormat(value, 'mm-dd-yyyy');
+      console.log('Formatted Date: ', formattedValue);
+      const res = await axios.get('http://localhost:8080/facts', {
+        params: { date: formattedValue },
+      });
       console.log('CLICKED DATA: ', res.data);
       setApiData(res.data);
     }
