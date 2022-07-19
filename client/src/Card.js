@@ -3,22 +3,16 @@ import { useState } from 'react';
 import './Card.css';
 
 function Card(props) {
-  const [cardValue, setCardValue] = useState();
-
-  const clicked = () => {
-    console.log('this was clicked: ', props.cardData);
-  };
-
   const cardData = (e) => {
     e.preventDefault();
-    setCardValue(props.id);
-    console.log('target: ', cardValue);
+
+    console.log('Clicked Card: ', props.cardData);
   };
   return (
     <div className='App'>
       <div className='container'>
         <div className='cellphone-container '>
-          <div className='card' onClick={clicked}>
+          <div className='card' onClick={cardData}>
             <img
               className='card-img'
               src={props.cardData.thumbnail}
