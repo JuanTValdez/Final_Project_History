@@ -11,15 +11,17 @@ import './App.css';
 import './Card.css';
 import Card from './Card.js';
 import DatePicker from './DatePicker.js';
-
-function App() {
+import Modal from './Modal.js';
+function App(props) {
   const [apiData, setApiData] = useState([]);
   const [value, setValue] = useState(new Date());
+  const [isVisible, setIsVisible] = useState(false);
+  const [useCardData, setCardData] = useState([]);
 
   const handleChange = (newValue) => {
     setValue(dateFormat(newValue, 'mm-dd-yyyy'));
 
-    console.log('value: ', value);
+    // console.log('value: ', value);
 
     getFactDate(newValue);
   };
@@ -27,17 +29,20 @@ function App() {
   async function getFactDate(selectedDate) {
     {
       const formattedValue = dateFormat(selectedDate, 'mm-dd-yyyy');
-      console.log('Formatted Date: ', formattedValue);
+      // console.log('Formatted Date: ', formattedValue);
       const res = await axios.get('http://localhost:8080/facts', {
         params: { date: formattedValue },
       });
-      console.log('CLICKED DATA: ', res.data);
+      // console.log('CLICKED DATA: ', res.data);
       setApiData(res.data);
     }
   }
 
   return (
     <div className='App'>
+      {isVisible && (
+        <Modal isVisible={setIsVisible} infoFromCard={useCardData} />
+      )}
       <header className='App-header'>
         <h1 className='headline'>What Happened?</h1>
         <h2 className='subhead'>This day in history</h2>
@@ -52,6 +57,9 @@ function App() {
         {!apiData
           ? null
           : apiData.map((data, index) => {
+              // {
+              //   setCardData(data);
+              // }
               return (
                 <div key={index}>
                   <Card
@@ -63,6 +71,8 @@ function App() {
                     factSummary={data.fact_summary}
                     partiesInvolved={data.parties_involved}
                     cardData={data}
+                    isVisible={setIsVisible}
+                    cardInfoData={setCardData}
                   />
                 </div>
               );

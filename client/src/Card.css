@@ -49,6 +49,8 @@
   display: block;
   border-radius: 10px;
   border: 3px solid #aaaaaa;
+
+  box-shadow: #aaaaaa 0px 2px 8px;
 }
 
 .text-card-cont {
@@ -129,6 +131,10 @@ h5 {
   color: #e7e7e7;
   font-style: italic;
 }
+
+/* .cardModal {
+  position: absolute;
+} */
 
 /* TYPOGRAPHY ENDS */
 

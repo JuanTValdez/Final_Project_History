@@ -1,6 +1,7 @@
 // import './App.css';
 import { useState } from 'react';
 import './Card.css';
+import Modal from './Modal.js';
 
 function Card(props) {
   const cardData = (e) => {
@@ -8,11 +9,25 @@ function Card(props) {
 
     console.log('Clicked Card: ', props.cardData);
   };
+
   return (
     <div className='App'>
-      <div className='container'>
-        <div className='cellphone-container '>
-          <div className='card' onClick={cardData}>
+      {/* {isVisible && <Modal isVisible={setIsVisible} />} */}
+
+      <div
+        className='container'
+        onClick={() => {
+          props.isVisible(true);
+
+          props.cardInfoData(props.cardData);
+        }}
+      >
+        <div className='cellphone-container'>
+          <div
+            className='card'
+
+            // onClick={cardData}
+          >
             <img
               className='card-img'
               src={props.cardData.thumbnail}
