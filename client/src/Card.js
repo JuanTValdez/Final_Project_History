@@ -19,7 +19,7 @@ function Card(props) {
         onClick={() => {
           props.isVisible(true);
 
-          props.cardInfoData(props.cardData);
+          props.cardInfo(props.cardData);
         }}
       >
         <div className='cellphone-container'>

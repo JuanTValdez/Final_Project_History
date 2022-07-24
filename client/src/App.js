@@ -16,7 +16,7 @@ function App(props) {
   const [apiData, setApiData] = useState([]);
   const [value, setValue] = useState(new Date());
   const [isVisible, setIsVisible] = useState(false);
-  const [useCardData, setCardData] = useState([]);
+  const [cardData, setCardData] = useState([]);
 
   const handleChange = (newValue) => {
     setValue(dateFormat(newValue, 'mm-dd-yyyy'));
@@ -40,9 +40,7 @@ function App(props) {
 
   return (
     <div className='App'>
-      {isVisible && (
-        <Modal isVisible={setIsVisible} infoFromCard={useCardData} />
-      )}
+      {isVisible && <Modal isVisible={setIsVisible} cardInfo={cardData} />}
       <header className='App-header'>
         <h1 className='headline'>What Happened?</h1>
         <h2 className='subhead'>This day in history</h2>
@@ -72,7 +70,7 @@ function App(props) {
                     partiesInvolved={data.parties_involved}
                     cardData={data}
                     isVisible={setIsVisible}
-                    cardInfoData={setCardData}
+                    cardInfo={setCardData}
                   />
                 </div>
               );
