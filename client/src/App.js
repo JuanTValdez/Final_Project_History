@@ -8,10 +8,10 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import './App.css';
-import './Card.css';
-import Card from './Card.js';
-import DatePicker from './DatePicker.js';
-import Modal from './Modal.js';
+import './components/Card.css';
+import Card from './components/Card.js';
+import DatePicker from './components/DatePicker.js';
+import Modal from './components/Modal.js';
 function App(props) {
   const [apiData, setApiData] = useState([]);
   const [value, setValue] = useState(new Date());
