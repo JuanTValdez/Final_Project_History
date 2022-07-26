@@ -1,13 +1,10 @@
 import React from 'react';
 import './Modal.css';
-import Card from './Card.js';
 
 function Modal(props) {
   const handleChildClick = function (e) {
     e.stopPropagation();
   };
-
-  console.log('Modal: ', props.cardInfo);
 
   return (
     <div className='modalBackground' onClick={() => props.isVisible(false)}>
@@ -25,7 +22,7 @@ function Modal(props) {
           <div className='fact-one'>
             <img
               className='article-thumbnail'
-              alt='photo'
+              alt='thumbnail'
               src={props.cardInfo.image_url_2}
             />
             {props.cardInfo.fact_long_1}
@@ -35,7 +32,7 @@ function Modal(props) {
             {' '}
             <img
               className='article-thumbnail'
-              alt='photo'
+              alt='thumbnail'
               src={props.cardInfo.image_url_1}
             />
             {props.cardInfo.fact_long_2}{' '}

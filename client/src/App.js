@@ -1,10 +1,4 @@
-import { useState, useEffect } from 'react';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { useState } from 'react';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import './App.css';
@@ -20,22 +14,17 @@ function App(props) {
 
   const handleChange = (newValue) => {
     setValue(dateFormat(newValue, 'mm-dd-yyyy'));
-
-    // console.log('value: ', value);
-
     getFactDate(newValue);
   };
 
   async function getFactDate(selectedDate) {
-    {
-      const formattedValue = dateFormat(selectedDate, 'mm-dd-yyyy');
-      // console.log('Formatted Date: ', formattedValue);
-      const res = await axios.get('http://localhost:8080/facts', {
-        params: { date: formattedValue },
-      });
-      // console.log('CLICKED DATA: ', res.data);
-      setApiData(res.data);
-    }
+    const formattedValue = dateFormat(selectedDate, 'mm-dd-yyyy');
+
+    const res = await axios.get('http://localhost:8080/facts', {
+      params: { date: formattedValue },
+    });
+
+    setApiData(res.data);
   }
 
   return (

@@ -5,7 +5,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { makeStyles } from '@material-ui/core';
-import dateFormat from 'dateformat';
 
 const useStyles = makeStyles({
   dateWrapper: {
@@ -27,7 +26,6 @@ export default function DatePicker(props) {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack className={classes.input} spacing={3}>
           <DesktopDatePicker
-            // label='Date desktop'
             inputFormat='MM-dd-yyyy'
             value={props.value}
             onChange={props.handleChange}
