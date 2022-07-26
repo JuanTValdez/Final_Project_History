@@ -39,7 +39,7 @@ function App(props) {
   }
 
   return (
-    <div className='App'>
+    <div className='App second-app'>
       {isVisible && <Modal isVisible={setIsVisible} cardInfo={cardData} />}
       <header className='App-header'>
         <h1 className='headline'>What Happened?</h1>
@@ -55,9 +55,6 @@ function App(props) {
         {!apiData
           ? null
           : apiData.map((data, index) => {
-              // {
-              //   setCardData(data);
-              // }
               return (
                 <div key={index}>
                   <Card
@@ -75,6 +72,30 @@ function App(props) {
                 </div>
               );
             })}
+      </div>
+
+      <div className='footer'>
+        <div className='stack'>Tech Stack</div>
+        <div className='flex-this'>
+          <div className='list-one'>
+            {' '}
+            <ul>
+              <li>React</li>
+              <li>NodeJS</li>
+              <li>Javascript</li>
+              <li>Material-UI</li>
+              <li>Wikipedia</li>
+            </ul>
+          </div>
+          <div className='list-two'>
+            <ul>
+              <li>Express</li>
+              <li>Axios</li>
+              <li>Postgres</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
