@@ -55,7 +55,7 @@ function Card(props) {
                 </div>
               </div>
               <div className='mr-grid parties-row'>
-                <div className='col1'>
+                <div className='col1 card-footer'>
                   <p className='card-parties'>{props.partiesInvolved}</p>
                 </div>
               </div>

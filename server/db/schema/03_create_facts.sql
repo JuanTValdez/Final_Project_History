@@ -11,6 +11,7 @@ category character varying(255) NOT NULL,
 fact_summary VARCHAR NOT NULL,
 fact_long_1 VARCHAR NOT NULL,
 fact_long_2 VARCHAR NOT NULL,
+video VARCHAR,
 image_url_1 VARCHAR,
 image_url_2 VARCHAR,
 parties_involved VARCHAR NOT NULL

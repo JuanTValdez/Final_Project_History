@@ -23,18 +23,31 @@ function Modal(props) {
         </div>
         <div className='body'>
           <div className='fact-one'>
+            <img
+              className='article-thumbnail'
+              alt='photo'
+              src={props.cardInfo.image_url_2}
+            />
             {props.cardInfo.fact_long_1}
-            <img alt='photo' src={props.cardInfo.thumbnail} />
           </div>
-          <div className='fact-two'>{props.cardInfo.fact_long_2}</div>
+
+          <div className='fact-two'>
+            {' '}
+            <img
+              className='article-thumbnail'
+              alt='photo'
+              src={props.cardInfo.image_url_1}
+            />
+            {props.cardInfo.fact_long_2}{' '}
+          </div>
         </div>
         <p>
           <iframe
             className='youtube-video'
             width='480'
             height='280'
-            src='https://www.youtube.com/embed/FTAW1PvEcAk'
-            title='The Normandy Landings: June 6, 1944 | D-Day Documentary'
+            src={props.cardInfo.video}
+            title='Fact Video'
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             allowfullscreen

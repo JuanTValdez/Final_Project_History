@@ -48,7 +48,7 @@ function App(props) {
           <p className='byline'>by Juan Valdez</p>
         </div>
       </header>
-
+      <h3 className='select-date'>Select a date</h3>
       <DatePicker handleChange={handleChange} value={value} />
 
       <div className='flex-card'>
